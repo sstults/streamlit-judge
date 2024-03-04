@@ -1,0 +1,33 @@
+open_ai:
+    system_message: You are a helpful AI assistant.
+    model_config:
+        model: gpt-4-turbo-preview
+        max_tokens: 2048
+        top_p: 0.1
+        seed: 1
+        frequency_penalty: 0
+        presence_penalty: 0
+        response_format:
+            type: json_object
+
+logging:
+  version: 1
+  disable_existing_loggers: False
+  formatters:
+    simple:
+      format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+  handlers:
+    console:
+      class: logging.StreamHandler
+      level: DEBUG
+      formatter: simple
+      stream: ext://sys.stdout
+  loggers:
+    ai_judge:
+      level: DEBUG
+      handlers: [console]
+      propagate: no
+  root:
+    level: WARNING
+    handlers: [console]
+
